@@ -57,7 +57,7 @@ window.addEventListener("scroll", () => {
   /* PROJECTS ENTER */
 
   projectsWrapper.style.transform =
-    `translateX(${18 - (heroProgress * 18)}%)`;
+    `translateX(${42 - (heroProgress * 42)}%)`;
 
   projectsWrapper.style.opacity =
     heroProgress;
@@ -89,7 +89,7 @@ window.addEventListener("scroll", () => {
     `
       translateX(
         ${
-          (18 - (heroProgress * 18))
+          (42 - (heroProgress * 42))
           -
           (contactProgress * 10)
         }%
@@ -102,7 +102,7 @@ window.addEventListener("scroll", () => {
   /* CONTACT ENTER */
 
   contactWrapper.style.transform =
-    `translateX(${18 - (contactProgress * 18)}%)`;
+    `translateX(${42 - (contactProgress * 42)}%)`;
 
   contactWrapper.style.opacity =
     contactProgress;

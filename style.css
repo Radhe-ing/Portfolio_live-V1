@@ -314,7 +314,7 @@ section {
 
   margin: 0 auto;
 
-  transform: translateX(18%);
+  transform: translateX(42%);
   opacity: 0;
 
   transition:
@@ -561,7 +561,7 @@ section {
   width: 100%;
   max-width: 900px;
 
-  transform: translateX(18%);
+  transform: translateX(42%);
   opacity: 0;
 
   transition:
@@ -783,47 +783,18 @@ section {
 
 @media (max-width: 768px) {
 
-.hero-title {
-  position: relative;
+  .hero-title {
+    font-size: clamp(2.6rem, 11vw, 4rem);
 
-  display: inline-block;
+    line-height: 1;
 
-  width: fit-content;
+    white-space: nowrap;
+  }
 
-  white-space: nowrap;
+  .hero-content {
+    max-width: 100%;
+  }
 
-  font-family: 'Cormorant Garamond', serif;
-
-  font-size: clamp(4rem, 8vw, 7rem);
-  font-weight: 300;
-
-  line-height: 0.95;
-
-  margin-bottom: 1rem;
-
-  background:
-    linear-gradient(
-      90deg,
-      rgba(240,236,228,0.22) 0%,
-      rgba(240,236,228,0.28) 35%,
-      rgba(255,245,220,1) 50%,
-      rgba(240,236,228,1) 58%,
-      rgba(240,236,228,1) 100%
-    );
-
-  background-size: 220% 100%;
-  background-position: 100% 0;
-
-  -webkit-background-clip: text;
-  background-clip: text;
-
-  -webkit-text-fill-color: transparent;
-
-  filter:
-    brightness(0.9);
-
-  animation:
-    heroSweep 2.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
   .projects-title {
