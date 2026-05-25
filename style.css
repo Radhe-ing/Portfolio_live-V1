@@ -1,0 +1,895 @@
+/* =========================================
+   RESET
+========================================= */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* =========================================
+   BASE
+========================================= */
+
+html,
+body {
+  width: 100%;
+  overflow-x: hidden;
+
+  background: #120d10;
+  color: #f0ece4;
+
+  font-family: 'Josefin Sans', sans-serif;
+
+  scroll-behavior: smooth;
+}
+
+body {
+  position: relative;
+}
+
+/* =========================================
+   GLOBAL
+========================================= */
+
+section {
+  width: 100%;
+}
+
+/* =========================================
+   HERO SPACER
+========================================= */
+
+#hero-spacer {
+  height: 100vh;
+}
+
+/* =========================================
+   HERO SECTION
+========================================= */
+
+#hero-section {
+  position: fixed;
+
+  top: 0;
+  left: 0;
+
+  width: 100%;
+  height: 100vh;
+
+  z-index: 1;
+
+  display: flex;
+  align-items: center;
+
+  padding-left: 8vw;
+  padding-right: 8vw;
+
+  background:
+    radial-gradient(
+      circle at left,
+      rgba(128, 38, 52,0.22),
+      transparent 35%
+    ),
+    radial-gradient(
+      circle at right,
+      rgba(18, 32, 64,0.18),
+      transparent 40%
+    ),
+    #120d10;
+
+  transition:
+    transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+    opacity 0.35s ease;
+
+  will-change:
+    transform,
+    opacity;
+
+  backface-visibility: hidden;
+  transform-style: preserve-3d;
+}
+
+.hero-content {
+  width: 100%;
+  max-width: 950px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* =========================================
+   HERO TEXT
+========================================= */
+
+.hero-label {
+  color: #b08b57;
+
+  font-size: 0.75rem;
+  letter-spacing: 0.22em;
+
+  margin-bottom: 1.5rem;
+
+  opacity: 0;
+
+  animation:
+    fadeUpSlow 1.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+
+  animation-delay: 1.0s;
+}
+
+.hero-title {
+  position: relative;
+
+  display: inline-block;
+
+  width: fit-content;
+
+  white-space: nowrap;
+
+  font-family: 'Cormorant Garamond', serif;
+
+  font-size: clamp(4rem, 8vw, 7rem);
+  font-weight: 300;
+
+  line-height: 0.95;
+
+  margin-bottom: 1rem;
+
+  color:
+    rgba(240,236,228,0.22);
+
+  overflow: hidden;
+}
+
+.hero-title::after {
+  content:
+    "Rabi Sankar Panda";
+
+  position: absolute;
+
+  top: 0;
+  left: 0;
+
+  width: 0%;
+
+  white-space: nowrap;
+
+  color:
+    rgba(240,236,228,1);
+
+  overflow: hidden;
+
+  text-shadow:
+    0 0 14px rgba(176,139,87,0.14),
+    0 0 34px rgba(176,139,87,0.08),
+    0 0 80px rgba(176,139,87,0.04);
+
+  transition:
+  text-shadow 0.3s ease;  
+
+  animation:
+    heroCharge 2.6s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+
+.hero-line {
+  width: 60px;
+  height: 1px;
+
+  background: #b08b57;
+
+  opacity: 0;
+
+  margin-bottom: 2rem;
+
+  animation:
+    fadeUpSlow 1.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+
+  animation-delay: 2.25s;
+}
+
+.hero-description {
+  max-width: 620px;
+
+  color: rgba(231,221,209,0.68);
+
+  font-size: 1rem;
+  line-height: 1.9;
+
+  margin-bottom: 1.5rem;
+
+  opacity: 0;
+
+  animation:
+    fadeUpSlow 1.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+
+  animation-delay: 1.0s;
+}
+
+.hero-description.secondary {
+  color: rgba(240,236,228,0.42);
+
+  font-size: 0.95rem;
+
+  animation-delay: 1.15s;
+}
+
+/* =========================================
+   SCROLL INDICATOR
+========================================= */
+
+.scroll-indicator {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+
+  margin-top: 4rem;
+
+  opacity: 0;
+
+  animation:
+    fadeUp 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+
+  animation-delay: 3.0s;
+}
+
+.scroll-indicator span {
+  color: rgba(240,236,228,0.35);
+
+  font-size: 0.72rem;
+  letter-spacing: 0.18em;
+}
+
+.scroll-bar {
+  width: 50px;
+  height: 1px;
+
+  background: rgba(240,236,228,0.2);
+}
+
+
+/* =========================================
+   SLOW ATMOSPHERIC FADE
+========================================= */
+
+@keyframes fadeUpSlow {
+
+  from {
+    opacity: 0;
+
+    transform:
+      translateY(24px);
+
+    letter-spacing: 0.06em;
+
+    filter:
+      blur(4px);
+  }
+
+  to {
+    opacity: 1;
+
+    transform:
+      translateY(0);
+
+    letter-spacing: 0;
+
+    filter:
+      blur(0);
+  }
+
+}
+
+/* =========================================
+   PROJECTS SECTION
+========================================= */
+
+#projects-section {
+  position: relative;
+
+  z-index: 2;
+
+  min-height: 250vh;
+
+  padding-top: 10rem;
+  padding-bottom: 10rem;
+  padding-left: 8vw;
+  padding-right: 8vw;
+
+  background:
+    radial-gradient(
+      circle at right,
+      rgba(18, 32, 64,0.18),
+      transparent 35%
+    ),
+    #120d10;
+}
+
+.projects-wrapper {
+  width: 100%;
+  max-width: 1000px;
+
+  margin: 0 auto;
+
+  transform: translateX(18%);
+  opacity: 0;
+
+  transition:
+    transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+    opacity 0.35s ease;
+
+  will-change:
+    transform,
+    opacity;
+}
+
+/* PROJECTS HEADER */
+
+.projects-header {
+  margin-bottom: 5rem;
+}
+
+.projects-label {
+  color: #b08b57;
+
+  font-size: 0.72rem;
+  letter-spacing: 0.2em;
+
+  margin-bottom: 1rem;
+
+  opacity: 0.8;
+}
+
+.projects-title {
+  font-family: 'Cormorant Garamond', serif;
+
+  font-size: clamp(3rem, 6vw, 5rem);
+  font-weight: 300;
+
+  color: #f0ece4;
+
+  line-height: 1;
+}
+
+/* PROJECT GRID */
+
+.projects-grid {
+  display: flex;
+  flex-direction: column;
+
+  gap: 1.5rem;
+
+  margin-bottom: 8rem;
+}
+
+/* PROJECT CARD */
+
+.project-card {
+  background: rgba(255,255,255,0.02);
+
+  border: 1px solid rgba(255,255,255,0.06);
+  border-left: 2px solid rgba(176,139,87,0.35);
+
+  padding: 2rem;
+
+  opacity: 0;
+
+  animation:
+    cardFade 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+
+  transition:
+    border-color 0.3s ease,
+    background 0.3s ease,
+    transform 0.3s ease;
+}
+
+.project-card:nth-child(1) {
+  animation-delay: 0.15s;
+}
+
+.project-card:nth-child(2) {
+  animation-delay: 0.28s;
+}
+
+.project-card:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+.project-card:hover {
+  border-left-color: #b08b57;
+
+  background: rgba(255,255,255,0.03);
+
+  transform: translateX(6px);
+}
+
+.project-top {
+  display: flex;
+  justify-content: space-between;
+
+  margin-bottom: 1rem;
+}
+
+.project-status,
+.project-year {
+  color: rgba(240,236,228,0.45);
+
+  font-size: 0.72rem;
+  letter-spacing: 0.18em;
+}
+
+.project-name {
+  font-family: 'Cormorant Garamond', serif;
+
+  font-size: 2rem;
+  font-weight: 400;
+
+  color: #f0ece4;
+
+  margin-bottom: 1rem;
+}
+
+.project-description {
+  max-width: 700px;
+
+  color: rgba(240,236,228,0.65);
+
+  line-height: 1.8;
+}
+
+/* CV SECTION */
+
+.cv-section {
+  display: flex;
+  flex-direction: column;
+
+  gap: 5rem;
+}
+
+.cv-block {
+  border-top: 1px solid rgba(255,255,255,0.08);
+
+  padding-top: 2rem;
+}
+
+.cv-label {
+  color: #b08b57;
+
+  font-size: 0.72rem;
+  letter-spacing: 0.2em;
+
+  margin-bottom: 2rem;
+
+  opacity: 0.8;
+}
+
+.cv-item {
+  display: flex;
+  justify-content: space-between;
+
+  gap: 2rem;
+
+  flex-wrap: wrap;
+}
+
+.cv-title {
+  font-family: 'Cormorant Garamond', serif;
+
+  font-size: 1.8rem;
+  font-weight: 400;
+
+  margin-bottom: 0.5rem;
+}
+
+.cv-subtext {
+  color: rgba(240,236,228,0.5);
+}
+
+.cv-date {
+  color: rgba(240,236,228,0.4);
+
+  letter-spacing: 0.1em;
+}
+
+/* SKILLS */
+
+.skills-grid {
+  display: flex;
+  flex-wrap: wrap;
+
+  gap: 1rem;
+}
+
+.skills-grid span {
+  padding:
+    0.6rem 1rem;
+
+  border:
+    1px solid rgba(176,139,87,0.2);
+
+  color:
+    rgba(240,236,228,0.75);
+
+  font-size: 0.9rem;
+}
+
+/* DIRECTION */
+
+.direction-text {
+  max-width: 700px;
+
+  color: rgba(240,236,228,0.6);
+
+  line-height: 1.9;
+
+  font-size: 1.05rem;
+}
+
+/* CONTACT */
+
+#contact-section {
+  position: relative;
+
+  z-index: 3;
+
+  min-height: 100vh;
+
+  display: flex;
+  align-items: center;
+
+  padding-left: 8vw;
+  padding-right: 8vw;
+
+  background:
+    radial-gradient(
+      circle at 30% 70%,
+      rgba(128, 38, 52,0.18),
+      transparent 35%
+    ),
+    radial-gradient(
+      circle at 80% 20%,
+      rgba(18, 32, 64,0.14),
+      transparent 40%
+    ),
+    #120d10;
+}
+
+.contact-wrapper {
+  width: 100%;
+  max-width: 900px;
+
+  transform: translateX(18%);
+  opacity: 0;
+
+  transition:
+    transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+    opacity 0.35s ease;
+
+  will-change:
+    transform,
+    opacity;
+}
+
+.contact-label {
+  color: #b08b57;
+
+  font-size: 0.72rem;
+  letter-spacing: 0.2em;
+
+  margin-bottom: 1.5rem;
+
+  opacity: 0.8;
+}
+
+.contact-title {
+  font-family: 'Cormorant Garamond', serif;
+
+  font-size: clamp(3.5rem, 7vw, 6rem);
+  font-weight: 300;
+
+  line-height: 0.95;
+
+  color: #f0ece4;
+
+  margin-bottom: 2rem;
+}
+
+.contact-line {
+  width: 60px;
+  height: 1px;
+
+  background: #b08b57;
+
+  opacity: 0.5;
+
+  margin-bottom: 2rem;
+}
+
+.contact-description {
+  max-width: 620px;
+
+  color: rgba(240,236,228,0.62);
+
+  line-height: 1.9;
+
+  margin-bottom: 4rem;
+}
+
+.contact-links {
+  display: flex;
+  flex-direction: column;
+
+  gap: 1rem;
+
+  margin-bottom: 4rem;
+}
+
+.contact-link {
+  display: flex;
+  align-items: center;
+
+  gap: 2rem;
+
+  text-decoration: none;
+
+  padding-bottom: 1rem;
+
+  border-bottom:
+    1px solid rgba(255,255,255,0.08);
+
+  transition:
+    border-color 0.3s ease,
+    transform 0.3s ease;
+}
+
+.contact-link:hover {
+  border-color:
+    rgba(176,139,87,0.35);
+
+  transform: translateX(6px);
+}
+
+.contact-type {
+  color:
+    rgba(240,236,228,0.35);
+
+  font-size: 0.72rem;
+  letter-spacing: 0.18em;
+
+  min-width: 100px;
+}
+
+.contact-value {
+  color:
+    rgba(240,236,228,0.82);
+
+  transition:
+    color 0.3s ease;
+}
+
+.contact-link:hover .contact-value {
+  color: #b08b57;
+}
+
+.contact-footer {
+  color:
+    rgba(240,236,228,0.3);
+
+  font-size: 0.85rem;
+
+  letter-spacing: 0.08em;
+}
+
+/* =========================================
+   ANIMATIONS
+========================================= */
+
+@keyframes fadeUp {
+
+  from {
+    opacity: 0;
+
+    transform:
+      translateY(18px);
+
+    letter-spacing: 0.04em;
+  }
+
+  to {
+    opacity: 1;
+
+    transform:
+      translateY(0);
+
+    letter-spacing: 0;
+  }
+
+}
+
+@keyframes cardFade {
+
+  from {
+    opacity: 0;
+
+    transform:
+      translateY(22px);
+  }
+
+  to {
+    opacity: 1;
+
+    transform:
+      translateY(0);
+  }
+
+}
+
+/* =========================================
+   HERO CHARGE EFFECT
+========================================= */
+
+@keyframes heroCharge {
+
+  0% {
+    width: 0%;
+
+    opacity: 0.55;
+
+    filter:
+      brightness(0.82);
+
+    text-shadow:
+      0 0 0 rgba(176,139,87,0);
+  }
+
+  18% {
+    text-shadow:
+      0 0 12px rgba(176,139,87,0.12),
+      0 0 26px rgba(176,139,87,0.05);
+  }
+
+  42% {
+    text-shadow:
+      0 0 24px rgba(176,139,87,0.18),
+      0 0 54px rgba(176,139,87,0.08);
+  }
+
+  68% {
+    text-shadow:
+      0 0 36px rgba(176,139,87,0.22),
+      0 0 82px rgba(176,139,87,0.1);
+  }
+
+  100% {
+    width: 100%;
+
+    opacity: 1;
+
+    filter:
+      brightness(1);
+
+    text-shadow:
+      0 0 0 rgba(176,139,87,0);
+  }
+
+}
+
+/* =========================================
+   RESPONSIVE
+========================================= */
+
+@media (max-width: 768px) {
+
+.hero-title {
+  position: relative;
+
+  display: inline-block;
+
+  width: fit-content;
+
+  white-space: nowrap;
+
+  font-family: 'Cormorant Garamond', serif;
+
+  font-size: clamp(4rem, 8vw, 7rem);
+  font-weight: 300;
+
+  line-height: 0.95;
+
+  margin-bottom: 1rem;
+
+  background:
+    linear-gradient(
+      90deg,
+      rgba(240,236,228,0.22) 0%,
+      rgba(240,236,228,0.28) 35%,
+      rgba(255,245,220,1) 50%,
+      rgba(240,236,228,1) 58%,
+      rgba(240,236,228,1) 100%
+    );
+
+  background-size: 220% 100%;
+  background-position: 100% 0;
+
+  -webkit-background-clip: text;
+  background-clip: text;
+
+  -webkit-text-fill-color: transparent;
+
+  filter:
+    brightness(0.9);
+
+  animation:
+    heroSweep 2.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+  .projects-title {
+    font-size: 3rem;
+  }
+
+  .contact-title {
+    font-size: 4rem;
+  }
+
+  .cv-item {
+    flex-direction: column;
+  }
+
+  .contact-link {
+    flex-direction: column;
+    align-items: flex-start;
+
+    gap: 0.5rem;
+  }
+
+}
+/* =========================================
+   HERO ENERGY SWEEP
+========================================= */
+
+@keyframes heroSweep {
+
+  0% {
+    background-position:
+      100% 0;
+
+    filter:
+      brightness(0.75);
+
+    text-shadow:
+      0 0 0 rgba(176,139,87,0);
+  }
+
+  45% {
+    filter:
+      brightness(1);
+
+    text-shadow:
+      0 0 18px rgba(176,139,87,0.08),
+      0 0 45px rgba(176,139,87,0.05);
+  }
+
+  70% {
+    filter:
+      brightness(1.08);
+
+    text-shadow:
+      0 0 34px rgba(176,139,87,0.14),
+      0 0 80px rgba(176,139,87,0.08);
+  }
+
+  100% {
+    background-position:
+      0% 0;
+
+    filter:
+      brightness(1);
+
+    text-shadow:
+      0 0 0 rgba(176,139,87,0);
+  }
+
+}
